@@ -1,10 +1,14 @@
 $(document).ready(function(){
     $("#send").click(function(){
-        $.ajax("http://insurance.ibitcoin.co.il/register/", {
-            first_name: $("#first_name").value,
-        },
-        function(data, status){
-           $("button").value = "done"; 
+        $.post({
+            dataType: "json",
+            url: "http://insurance.ibitcoin.co.il/register/",
+            data: JSON.stringify({
+                first_name: $("#first_name")[0].value,
+                last_name: $("#last_name")[0].value,
+                phone: $("#phone")[0].value,
+                project: "insurance"
+            }),
         });
     });
 });
